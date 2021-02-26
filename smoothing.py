@@ -1,5 +1,6 @@
 import numpy as np
 import progressbar
+from scipy import interpolate
 
 from pb import set_widgets
 
@@ -102,4 +103,10 @@ def bilinear_smoothing(data: np.ndarray, step: int = 10):
                     break
                 end_row = len(data) - 1
             bar.update(end_row)
+    return result
+
+
+def bicubic_smoothing(data: np.ndarray, step: int = 10):
+    result = data
+
     return result

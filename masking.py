@@ -1,4 +1,4 @@
-import math
+import math as m
 
 
 def simple_masking(current: float):
@@ -44,11 +44,10 @@ def grayscale_lines_masking(current: float):
 
 
 def sin_coloring(current: float):
-    result = int(abs(math.sin(current)) * 255)
+    result = int(abs(m.sin(current)) * 255)
     return [result, result, result, 255]
 
 
 def log_coloring(current: float):
-    result = int(abs(math.log10(current)) * 255)
+    result = int(abs(m.log10(current)) * 255)
     return [result, result, result, 255]
-

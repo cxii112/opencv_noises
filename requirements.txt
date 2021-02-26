@@ -1,0 +1,8 @@
+numpy>=1.20.1
+opencv-python>=4.5.1.48
+progressbar2>=3.53.1
+python-utils>=2.5.6
+six>=1.15.0
+uuid>=1.30
+argparse>=1.4.0
+scipy>=1.6.1

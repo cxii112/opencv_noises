@@ -19,6 +19,12 @@ def bilinear_interpolation(fx0y0: float, fx1y0: float, fx0y1: float, fx1y1: floa
     )
 
 
+def count_member(x, y, p: list):
+    return p[0] * (x ** p[1]) * (y ** p[2]) * \
+           ((x - 1) ** p[3]) * ((x + 1) ** p[4]) * ((x - 2) ** p[5]) * \
+           ((y - 1) ** p[6]) * ((y + 1) ** p[7]) * ((y - 2) ** p[8])
+
+
 def double_linear_smoothing(data: np.ndarray, step: int = 10):
     widgets = set_widgets('Smoothing', len(data[0]) + len(data))
     with progressbar.ProgressBar(max_value=(len(data[0]) + len(data)), widgets=widgets) as bar:
@@ -62,7 +68,7 @@ def double_linear_smoothing(data: np.ndarray, step: int = 10):
 
 def bilinear_smoothing(data: np.ndarray, step: int = 10):
     result = data
-    widgets =set_widgets('Smoothing', len(data))
+    widgets = set_widgets('Smoothing', len(data))
     with progressbar.ProgressBar(max_value=(len(data)), widgets=widgets) as bar:
         start_row = 0
         end_row = step - 1
@@ -108,5 +114,23 @@ def bilinear_smoothing(data: np.ndarray, step: int = 10):
 
 def bicubic_smoothing(data: np.ndarray, step: int = 10):
     result = data
+    params = [
+        (1 / 4,     0, 0, 1, 1, 1, 1, 1, 1),
+        (- 1 / 4,   1, 0, 0, 1, 1, 1, 1, 1),
+        (- 1 / 4,   0, 1, 1, 1, 1, 0, 1, 1),
+        (1 / 4,     1, 1, 0, 1, 1, 0, 1, 1),
+        (- 1 / 12,  1, 0, 1, 0, 1, 1, 1, 1),
+        (- 1 / 12,  0, 1, 1, 1, 1, 1, 0, 1),
+        (1 / 12,    1, 1, 1, 0, 1, 1, 1, 1),
+        (1 / 12,    1, 1, 0, 1, 1, 1, 0, 1),
+        (1 / 12,    1, 0, 1, 1, 0, 1, 1, 0),
+        (1 / 12,    0, 1, 1, 1, 1, 1, 0, 1),
+        (1 / 36,    1, 1, 1, 0, 1, 1, 0, 1),
+        (- 1 / 12,  1, 1, 1, 1, 0, 0, 1, 1),
+        (- 1 / 12,  1, 1, 0, 1, 1, 1, 1, 0),
+        (- 1 / 36,  1, 1, 1, 1, 0, 1, 0, 1),
+        (- 1 / 36,  1, 1, 1, 0, 1, 1, 1, 0),
+        (1 / 36,    1, 1, 1, 1, 0, 1, 1, 0)
+    ]
 
     return result

@@ -1,7 +1,7 @@
 import math as m
 
 
-def simple_masking(current: float):
+def simple_alpha_masking(current: float):
     if current > 0.9:
         return [0, 0, 0, 0]
     elif current > 0.7:
@@ -12,6 +12,11 @@ def simple_masking(current: float):
         return [0, 0, 0, 255]
     else:
         return [0, 0, 0, 0]
+
+
+def simple_masking(current: float):
+    result = ((current + 1) ** 3 * 1000) % 256
+    return [result, result, result, 255]
 
 
 def colorful_masking(current: float):

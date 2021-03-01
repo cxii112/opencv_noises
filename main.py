@@ -5,10 +5,10 @@ import uuid
 import progressbar
 
 import gen
-from smoothing import bilinear_smoothing
+from smooth import bilinear
+from smooth import bicubic
 from pb import set_widgets
-from masking import grayscale_lines_masking
-from masking import simple_masking
+from masking import grayscale
 
 
 def raw_noise(height: int = 500, width: int = 500):
@@ -46,14 +46,14 @@ if __name__ == '__main__':
     outfile: {file_name}""")
 
     noise = raw_noise(gen.args.height * 2, gen.args.width * 2)
-    # noise = double_linear_smoothing(noise, gen.args.step)
-    # noise = bilinear_smoothing(noise, gen.args.step * 2)
-    noise = image_from_noise(noise, simple_masking)
-    noise = cv2.resize(noise, (gen.args.height * 2, gen.args.width * 2), interpolation=cv2.INTER_LANCZOS4)
+    # noise = bilinear(noise, gen.args.step * 2)
+    noise = bicubic(noise, gen.args.step * 2)
+    noise = image_from_noise(noise, grayscale.lines)
+    # noise = cv2.resize(noise, (gen.args.height * 2, gen.args.width * 2))
     # noise = image_from_noise(noise, grayscale_lines_masking)
     # noise = cv2.blur(noise, (15, 15))
     img = noise
-    # img = cv2.resize(noise, (gen.args.height, gen.args.width))
+    # img = cv2.resize(img, (gen.args.height, gen.args.width))
     # cv2.imshow(file_name, img)
     # cv2.waitKey(0)
 

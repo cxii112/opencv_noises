@@ -1,3 +1,3 @@
-import alpha
-import color
-import grayscale
+from . import alpha
+from . import color
+from . import grayscale

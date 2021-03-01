@@ -1,7 +1,7 @@
 import numpy as np
 import progressbar
 
-from pb import set_widgets
+from utils import set_widgets
 
 def linear_interpolation(f0: float, f1: float, x0: int, x1: int, x: int) -> float:
     return f0 + ((f1 - f0) / (x1 - x0)) * (x - x0)

@@ -1,7 +1,7 @@
 import progressbar
 import numpy as np
 
-from pb import set_widgets
+from utils import set_widgets
 
 
 def count_member(x, y, p: tuple):

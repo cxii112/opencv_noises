@@ -1,10 +1,13 @@
 import progressbar
 
 
-def set_widgets(message: str, max_value: int):
+def set_widgets(message: str, max_value: int, bounce: bool = False):
+    bar = progressbar.Counter
+    if bounce:
+        bar = progressbar.BouncingBar
     widgets = [
         f'{message}...',
-        ' (', progressbar.Counter(), f'/{max_value}) ',
+        ' (', bar(), f'/{max_value}) ',
         progressbar.Bar(left='[', right=']'),
         progressbar.ETA()
     ]

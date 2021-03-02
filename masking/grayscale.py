@@ -3,7 +3,13 @@ import math as m
 
 def simple(current: float):
     # result = ((current + 1) ** 3 * 1000) % 256
-    result = current ** 2 * 255
+    result = abs(current) * 256
+    return [result, result, result, 255]
+
+
+def simple_reverse(current: float):
+    # result = ((current + 1) ** 3 * 1000) % 256
+    result = 256 - abs(current) * 256
     return [result, result, result, 255]
 
 

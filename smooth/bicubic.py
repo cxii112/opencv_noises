@@ -50,6 +50,7 @@ def bicubic(data: np.ndarray, step: int = 10):
     widgets = set_widgets('Smoothing', len(data))
     with progressbar.ProgressBar(max_value=(len(data)), widgets=widgets) as bar:
         while row_points[-1] < len(data):
+            bar.update(row_points[0])
             col_points = (0, 0, 0, 0)
             if col_points[3] + step * 3 >= len(data):
                 diff = (col_points[3] - len(data)) // 3
@@ -66,7 +67,6 @@ def bicubic(data: np.ndarray, step: int = 10):
                 row_shift = 0
                 while row_points[0] + row_shift <= row_points[-1]:
                     col_shift = 0
-                    bar.update(row_points[0] + row_shift)
                     while col_points[0] + col_shift <= col_points[-1]:
                         values = [
                             data[row_points[0]][col_points[0]],
@@ -89,8 +89,6 @@ def bicubic(data: np.ndarray, step: int = 10):
                             data[row_points[3]][col_points[2]],
                             data[row_points[3]][col_points[3]]
                         ]
-                        result[row_points[0] + row_shift][col_points[0] + col_shift] = \
-                            data[row_points[0] + row_shift][col_points[0] + col_shift]
                         row_match = (row_points[0] + row_shift == row_points[0] or
                                      row_points[0] + row_shift == row_points[1] or
                                      row_points[0] + row_shift == row_points[2] or
@@ -100,10 +98,13 @@ def bicubic(data: np.ndarray, step: int = 10):
                                      col_points[0] + col_shift == col_points[2] or
                                      col_points[0] + col_shift == col_points[3])
                         if not (row_match and col_match):
+                            result[row_points[0] + row_shift][col_points[0] + col_shift] = 0
                             for i in range(0, 16):
+                                x = col_shift - (col_points[1] - col_points[0])
+                                y = row_shift - (row_points[1] - row_points[0])
                                 result[row_points[0] + row_shift][col_points[0] + col_shift] += count_member(
-                                    col_shift / (step * 3 - 1),
-                                    row_shift / (step * 3 - 1),
+                                    x / (step * 3 - 1),
+                                    y / (step * 3 - 1),
                                     params[i]
                                 ) * values[i]
                         col_shift += 1
@@ -121,6 +122,7 @@ def bicubic(data: np.ndarray, step: int = 10):
                                   col_points[3] + step - 1,
                                   col_points[3] + (step * 2) - 1,
                                   col_points[3] + (step * 3) - 1)
+            bar.update(row_points[-1])
             if row_points[-1] == len(data) - 1:
                 break
             if row_points[3] + step * 3 >= len(data):

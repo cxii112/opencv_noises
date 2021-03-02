@@ -31,12 +31,14 @@ if __name__ == '__main__':
     step: {args.step}
     outfile: {file_name}""")
 
-    noise = noise.simple(args.height * 2, args.width * 2)
-    noise = smooth.bicubic(noise, args.step * 2)
-    noise = image_from_noise(noise, grayscale.lines)
+    noise = noise.simple(args.height, args.width)
+    # noise = smooth.bicubic(noise, args.step * 2)
+    print('Smoothing')
+    noise = smooth.cubic2(noise, args.step)
+    noise = image_from_noise(noise, grayscale.simple)
     # noise = cv2.blur(noise, (15, 15))
     img = noise
-    # img = cv2.resize(img, (gen.args.height, gen.args.width))
+    # img = cv2.resize(img, (args.height, args.width))
 
     print(f'Generated file: {file_name}')
     cv2.imwrite(file_name, img)

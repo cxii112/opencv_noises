@@ -31,11 +31,11 @@ parser.add_argument('--height',
                     dest='height',
                     default=500,
                     help='set image height.')
-parser.add_argument('-s', '--step',
+parser.add_argument('-s', '--steps',
                     type=int,
                     action='store',
                     required=True,
                     default=10,
-                    dest='step',
-                    help='set step in pixels for smoothing function.')
+                    dest='steps',
+                    help='set steps in pixels for smoothing function.')
 args = parser.parse_args()

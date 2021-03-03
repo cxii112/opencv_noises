@@ -3,7 +3,7 @@ from args import args
 import cv2
 import numpy as np
 import uuid
-import progressbar
+from tqdm import tqdm
 
 import smooth
 from utils import set_widgets
@@ -13,14 +13,23 @@ import noise
 
 def image_from_noise(data: np.ndarray, coloring):
     result = []
-    widgets = set_widgets('Coloring', len(data))
-    with progressbar.ProgressBar(max_value=len(data), widgets=widgets) as bar:
-        for row in range(0, len(data)):
-            bar.update(row)
-            temp = []
-            for col in range(0, len(data[row])):
-                temp.append(coloring(data[row][col]))
-            result.append(temp)
+    # widgets = set_widgets('Coloring', len(data))
+    # with progressbar.ProgressBar(max_value=len(data), widgets=widgets) as bar:
+    # bar_row = tqdm(range(len(data)), position=0, desc='Rows', ncols=80)
+    # bar_col = tqdm(range(len(data[0])), position=1, desc='Cols', ncols=80, leave=False)
+    # bar_row.update(0)
+    # bar_col.update(0)
+    for row in tqdm(range(0, len(data)), position=0, desc='Rows', ncols=80):
+        # bar.update(row)
+        temp = []
+        for col in tqdm(range(0, len(data[row])), position=1, desc='Cols', ncols=80, leave=False):
+            temp.append(coloring(data[row][col]))
+            # bar_col.update()
+        # bar_row.update()
+        # bar_col.clear()
+        result.append(temp)
+    # bar_col.close()
+    # bar_row.close()
     return np.array(result)
 
 

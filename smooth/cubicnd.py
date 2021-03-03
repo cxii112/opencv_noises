@@ -12,7 +12,9 @@ def cubic1(noise: np.ndarray, dest_len: int) -> np.ndarray:
     return result
 
 
-def cubic2(noise: np.ndarray, width: int, height: int) -> np.ndarray:
+def cubic2(noise: np.ndarray, width: int, height: int, is_root: bool = True) -> np.ndarray:
+    if is_root:
+        print('Smoothing 2 dimensional noise...')
     rows = []
     for row in noise:
         rows.append(cubic1(row, width))

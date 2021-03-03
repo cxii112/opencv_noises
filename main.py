@@ -36,7 +36,7 @@ if __name__ == '__main__':
                          args.width // args.steps + 1)
     print('Smoothing')
     raw_image = smooth.cubic2(noise, args.width, args.height)
-    img = image_from_noise(raw_image, masking.color.simple)
+    img = image_from_noise(raw_image, masking.grayscale.gauss_lines)
 
-    print(f'Generated file: {file_name}')
     cv2.imwrite(file_name, img)
+    print(f'Generated file: {file_name}')

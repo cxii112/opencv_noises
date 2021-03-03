@@ -10,8 +10,8 @@ def new_img(mask: np.ndarray, source: np.ndarray):
     for row in range(0, len(source)):
         temp = []
         for col in range(0, len(source[row])):
-            temp.append(editing.rgb.levels(mask[row][col],
-                                           source[row][col]))
+            temp.append(editing.rgb.levels_bmc(mask[row][col],
+                                               source[row][col]))
         result.append(temp)
     return np.array(result)
 

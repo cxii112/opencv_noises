@@ -1,6 +1,7 @@
 import argparse
 import os
 from sys import platform
+from settings import PROG_NAME
 
 
 def dir_path(string):
@@ -15,37 +16,67 @@ def dir_path(string):
         raise NotADirectoryError(string)
 
 
-parser = argparse.ArgumentParser(description='Parse path to output image, type, image width and height')
-parser.add_argument('out_path',
-                    type=dir_path,
-                    help='directory for output image')
-parser.add_argument('action',
-                    type=str,
-                    choices=['gen', 'edit'],
-                    help='defines mode')
-parser.add_argument('-t', '--type',
-                    type=str,
-                    action='store',
-                    dest='type',
-                    choices=['jpg', 'png'],
-                    help='set file type')
-parser.add_argument('--width',
-                    type=int,
-                    action='store',
-                    dest='width',
-                    default=500,
-                    help='set image width')
-parser.add_argument('--height',
-                    type=int,
-                    action='store',
-                    dest='height',
-                    default=500,
-                    help='set image height')
-parser.add_argument('-s', '--steps',
-                    type=int,
-                    action='store',
-                    required=True,
-                    default=10,
-                    dest='steps',
-                    help='set steps in pixels for smoothing function')
+def file_path(string):
+    if os.path.isfile(string):
+        return string
+    else:
+        raise FileNotFoundError(string)
+
+
+parser = argparse.ArgumentParser(prog=f'{PROG_NAME}.py',
+                                 description='Application for generate or editing images using noise')
+parser.epilog = f'Run {PROG_NAME}.py <action> -h to see more details'
+subparsers = parser.add_subparsers(title='You can use next commands',
+                                   dest='action')
+
+generate = subparsers.add_parser('gen', help='App will generate new image from noise')
+generate.add_argument('output',
+                      type=dir_path,
+                      help='directory for output image')
+generate.add_argument('--width',
+                      type=int,
+                      action='store',
+                      dest='width',
+                      default=500,
+                      help='set image width')
+generate.add_argument('--height',
+                      type=int,
+                      action='store',
+                      dest='height',
+                      default=500,
+                      help='set image height')
+generate.add_argument('-s', '--steps',
+                      type=int,
+                      action='store',
+                      required=True,
+                      default=10,
+                      dest='steps',
+                      help='set steps in pixels for smoothing function')
+generate.add_argument('-t', '--type',
+                      type=str,
+                      action='store',
+                      dest='type',
+                      choices=['jpg', 'png'],
+                      help='set file type')
+
+edit = subparsers.add_parser('edit', help='App will editing existing image')
+edit.add_argument('input',
+                  type=file_path,
+                  help='input file name')
+edit.add_argument('output',
+                  type=dir_path,
+                  help='directory for output image')
+edit.add_argument('-s', '--steps',
+                  type=int,
+                  action='store',
+                  required=True,
+                  default=10,
+                  dest='steps',
+                  help='set steps in pixels for smoothing function')
+edit.add_argument('-t', '--type',
+                  type=str,
+                  action='store',
+                  dest='type',
+                  choices=['jpg', 'png'],
+                  help='set file type')
 args = parser.parse_args()

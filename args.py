@@ -1,9 +1,15 @@
 import argparse
 import os
+from sys import platform
 
 
 def dir_path(string):
     if os.path.isdir(string):
+        if string[-1] != '/' and string[-1] != '\\':
+            if platform.lower().find('win') != -1:
+                string += '\\'
+            else:
+                string += '/'
         return string
     else:
         raise NotADirectoryError(string)
@@ -13,6 +19,10 @@ parser = argparse.ArgumentParser(description='Parse path to output image, type, 
 parser.add_argument('out_path',
                     type=dir_path,
                     help='directory for output image')
+parser.add_argument('action',
+                    type=str,
+                    choices=['gen', 'edit'],
+                    help='defines mode')
 parser.add_argument('-t', '--type',
                     type=str,
                     action='store',

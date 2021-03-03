@@ -7,7 +7,7 @@ import progressbar
 
 import smooth
 from utils import set_widgets
-from masking import grayscale
+import masking
 import noise
 
 
@@ -34,13 +34,9 @@ if __name__ == '__main__':
 
     noise = noise.simple(args.height // args.steps + 1,
                          args.width // args.steps + 1)
-    # noise = smooth.bicubic(noise, args.steps * 2)
     print('Smoothing')
     raw_image = smooth.cubic2(noise, args.width, args.height)
-    img = image_from_noise(raw_image, grayscale.simple)
-    # noise = cv2.blur(noise, (15, 15))
-    # img = noise
-    # img = cv2.resize(img, (args.height, args.width))
+    img = image_from_noise(raw_image, masking.color.simple)
 
     print(f'Generated file: {file_name}')
     cv2.imwrite(file_name, img)

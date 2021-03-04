@@ -21,5 +21,5 @@ def generate(width, height, steps):
     raw_noise = noise.simple(height // steps + 1,
                              width // steps + 1)
     raw_image = smooth.cubic2(raw_noise, width, height)
-    img = image_from_noise(raw_image, masking.grayscale.gauss_lines)
+    img = image_from_noise(raw_image, masking.grayscale.lines_many)
     return img

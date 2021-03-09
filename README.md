@@ -1,76 +1,28 @@
 # О приложении
-Приложение создано для генерации и редктирования изображений, используя обработанный шум.
+Приложение создано для генерации и редактирования изображений, используя обработанный шум.
 
 ## Использование
 
-Ддя создания изображения достаточно запустить:
+Убедитесь, что у Вас уже установленны необходимые [зависимости][requirements]. 
+Подробнее про использование можно почитать [тут][full-usage], полный список эффектов с примерами [здесь][full-effects].
+Чтобы создать изображение, достаточно запустить:
 
 ```
 noizy.py gen grayscale lines /path/to/destination
 ```
+Получим:
+
+![Полученное изображение](./examples/gen__grayscale__lines.png)
+
 Для изменения:
 ```
-noizy.py edit channels levels-rgb /path/to/source.jpg /path/to/destination
-```
-
-Подробнее про использование можно почитать [тут][full-usage], полный список эффектов с примерами [здесь][full-effects].
-
-### Примеры
-
-#### Генерация
-
-Запустим приложение со следующими параметрами:
-
-```
-gen grayscale lines-many /path/to/destination --width 500 --height 500 -t png -s 50
+noizy.py edit channels levels-rgb /path/to/source.image /path/to/destination
 ```
 Получим:
 
-![Полученное изображение](./examples/gen__grayscale__lines-many__--width_500__--height_500__-t_png__-s_50.png)
-
-Попробуем:
-
-```
-gen color levels /path/to/destination --width 500 --height 500 -t png -s 50
-```
-Получим:
-
-![Полученное изображение](./examples/gen__color__levels__--width_500__--height_500__-t_png__-s_50.png)
-
-
-#### Изменение
-
-В отличие от генерации, высота и ширина берутся из исходного изображения. В качестве примером будем брать изображения [отсюда][images-source].
-
-Запустим приложение со следующими параметрами:
-
-```
-edit channels levels-ymc /path/to/source_image1.jpg /path/to/destination -t png -s 50
-```
-<details>
-<summary>Исходное изображение</summary>
-
-![Полученное изображение](./examples/source_image1.jpg)
-</details>
-
-Результат:
-![Полученное изображение](./examples/edit__channels__levels-ymc__-t_png__-s__50.png)
-
-Теперь попробуем:
-
-```
-edit channels levels-bmc /path/to/source_image2.jpg /path/to/destination -t png -s 20
-```
-<details>
-<summary>Исходное изображение</summary>
-
-![Полученное изображение](./examples/source_image2.jpg)
-</details>
-
-Результат:
-![Полученное изображение](./examples/edit__channels__levels-bmc__-t_png__-s__20.png)
-
+![Полученное изображение](./examples/edit__channels__levels-ymc.png)
 
 [images-source]: https://thispersondoesnotexist.com/ "Источник изображений"
 [full-usage]: ./USAGE.md
 [full-effects]: ./EFFECTS.md
+[requirements]: ./requirements.txt

@@ -79,10 +79,6 @@ def generate(args):
             return image_from_noise(raw_image(
                 args.width, args.height, args.steps
             ), masking.grayscale.sin)
-        elif args.effect == 'log':
-            return image_from_noise(raw_image(
-                args.width, args.height, args.steps
-            ), masking.grayscale.log)
         else:
             no_effect(args.base, args.effect)
     else:

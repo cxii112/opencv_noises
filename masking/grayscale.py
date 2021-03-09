@@ -32,8 +32,3 @@ def lines_many(current: float):
 def sin(current: float):
     result = int(abs(m.sin(current)) * 255)
     return [result, result, result, 255]
-
-
-def log(current: float):
-    result = int(abs(m.log10(current)) * 255)
-    return [result, result, result, 255]

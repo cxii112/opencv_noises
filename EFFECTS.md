@@ -1,50 +1,85 @@
 # Эффекты
 
-Здесь описан полный список эффектов с примерами изображений. Для удобства список разделен на разделы: [генерация](#генерация) и [изменение](#изменение). Для лучшего понимания прочитайте [руководство][full-usage].
+Здесь описан полный список эффектов с примерами изображений. 
+В будущем он может расшириться, а некоторые эффекты измениться.
+Навигация: 
+* [Генерация](#генерация)
+* [Изменение](#изменение). 
+
+Для лучшего понимания прочитайте [руководство][full-usage], если еще не сделали это.
 
 ## Генерация
 
-Все сгенерированные изображения будут со стандартными значениями высоты, ширины, количества шагов, поэтому будем рассматривать только эффекты.
+Все сгенерированные изображения будут со стандартными значениями высоты, ширины, количества шагов, 
+поэтому будем рассматривать только эффекты.
 
 ### alpha
 
 ```
 alpha simple
 ```
-![Результат]()
+![Результат](./examples/gen__alpha__simple.png)
 ```
 alpha lines
 ```
-![Результат]()
+![Результат](./examples/gen__alpha__lines.png)
 
 ### color
 
 ```
 color simple
 ```
-![Результат]()
+![Результат](./examples/gen__color__simple.png)
 ```
 color levels
 ```
-![Результат]()
+![Результат](./examples/gen__color__levels.png)
 
 ### grayscale
 
 ```
 grayscale simple
 ```
-![Результат]()
+![Результат](./examples/gen__grayscale__simple.png)
 ```
 grayscale lines
 ```
-![Результат]()
+![Результат](./examples/gen__grayscale__lines.png)
 ```
 grayscale lines-many
 ```
-![Результат]()
+Для стандартного шага эффект близок к обычному шуму, вот пример для `-s 50`.
+
+![Результат](./examples/gen__grayscale__lines-many.png)
 ```
 grayscale simple-reverse
 ```
-![Результат]()
+![Результат](./examples/gen__grayscale__simple-reverse.png)
+
+```
+grayscale simple-reverse
+```
+![Результат](./examples/gen__grayscale__sin.png)
+
+## Изменение
+
+Все измененные изображения будут сщ стандартными параметрами, в качестве исходного изображения использовать `source_image1.jpg`.
+
+### channels
+
+```
+channels levels-rbg
+```
+![Результат](./examples/edit__channels__levels-rgb.png)
+
+```
+channels levels-ymc
+```
+![Результат](./examples/edit__channels__levels-ymc.png)
+
+```
+channels levels-bmc
+```
+![Результат](./examples/edit__channels__levels-bmc.png)
 
 [full-usage]: ./USAGE.md

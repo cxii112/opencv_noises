@@ -46,3 +46,5 @@ grayscale lines-many
 grayscale simple-reverse
 ```
 ![Результат]()
+
+[full-usage]: ./USAGE.md

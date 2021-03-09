@@ -1,32 +1,48 @@
+# Эффекты
 
-Создадим прозрачное изображение из линий в формате `.png` размером `400` на `400`, с сеткой шума в `40` шагов.
+Здесь описан полный список эффектов с примерами изображений. Для удобства список разделен на разделы: [генерация](#генерация) и [изменение](#изменение). Для лучшего понимания прочитайте [руководство][full-usage].
+
+## Генерация
+
+Все сгенерированные изображения будут со стандартными значениями высоты, ширины, количества шагов, поэтому будем рассматривать только эффекты.
+
+### alpha
+
 ```
-gen alpha lines /path/to/destination --width 400 --height 400 -t png -s 40
+alpha simple
 ```
-
-<details><summary>Результат</summary>
-
-![Результат](./examples/gen__alpha__lines__--width__400__--height_400__-t__png__-s-40.png)
-</details>
-
-
-Создадим прозрачное изображение из "уровней" в формате `.png` размером `400` на `400`, с сеткой шума в `40` шагов.
+![Результат]()
 ```
-gen color levels /path/to/destination --width 400 --height 400 -t png -s 40
+alpha lines
 ```
-<details><summary>Результат</summary>
+![Результат]()
 
-![Результат](./examples/gen__color__levels__--width_400__--height_400__-t_png__-s_40.png)
-</details>
+### color
 
-
-
-Создадим монохромное изображение из линий в формате `.png` размером `400` на `400`, с сеткой шума в `40` шагов.
 ```
-gen grayscale lines /path/to/destination --width 400 --height 400 -t png -s 40
+color simple
 ```
+![Результат]()
+```
+color levels
+```
+![Результат]()
 
-<details><summary>Результат</summary>
+### grayscale
 
-![Результат](./examples/gen__grayscale__lines__--width_400__--height_400__-t_png__-s_40.png)
-</details>
+```
+grayscale simple
+```
+![Результат]()
+```
+grayscale lines
+```
+![Результат]()
+```
+grayscale lines-many
+```
+![Результат]()
+```
+grayscale simple-reverse
+```
+![Результат]()

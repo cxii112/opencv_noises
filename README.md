@@ -20,7 +20,6 @@ noizy.py edit channels levels-rgb /path/to/source.image /path/to/destination
 
 ![Полученное изображение](./examples/edit__channels__levels-ymc.png)
 
-
 Все изображения людей взяты [отсюда][images-source].
 
 [images-source]: https://thispersondoesnotexist.com/ "Источник изображений"

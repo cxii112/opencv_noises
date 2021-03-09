@@ -55,7 +55,7 @@ grayscale sin
 ![Результат](./examples/gen__grayscale__sin.png)
 
 ## Изменение
-Все измененные изображения будут со стандартными параметрами, в качестве исходного изображения использовать `source_image1.jpg`.
+Все измененные изображения будут со стандартными параметрами, в качестве исходного изображения использовать [`source_image1.jpg`][source-image].
 
 ### channels
 ```
@@ -72,3 +72,4 @@ channels levels-bmc
 ![Результат](./examples/edit__channels__levels-bmc.png)
 
 [full-usage]: ./USAGE.md
+[source-image]: ./examples/source_image1.jpg

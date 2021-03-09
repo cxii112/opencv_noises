@@ -11,12 +11,21 @@ noizy.py [-h] {gen,edit} ...
 ```
 Где вместо `...` пишутся параметры, зависящие от режима (`gen` или `edit`).
 </details>
+Например:
 
-Подробнее можо почитать [тут][full-usage].
+```
+noizy.py gen grayscale lines /path/to/destination
+```
+или
+```
+noizy.py edit channels levels-rgb /path/to/source.jpg /path/to/destination
+```
 
-#### Примеры
+Подробнее можно почитать [тут][full-usage].
 
-###### Генерация
+### Примеры
+
+#### Генерация
 
 Запустим приложение со следующими параметрами:
 
@@ -37,7 +46,7 @@ gen color levels /path/to/destination --width 500 --height 500 -t png -s 50
 ![Полученное изображение](./examples/gen__color__levels__--width_500__--height_500__-t_png__-s_50.png)
 
 
-###### Изменение
+#### Изменение
 
 В отличие от генерации, высота и ширина берутся из исходного изображения. В качестве примером будем брать изображения [отсюда][images-source].
 

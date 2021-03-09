@@ -29,12 +29,12 @@ parser.epilog = f'Run {PROG_NAME}.py <action> -h to see more details'
 subparsers = parser.add_subparsers(title='You can use next commands',
                                    dest='action')
 
-generate = subparsers.add_parser('gen', help='App will generate new image from noise')
+generate = subparsers.add_parser('gen', help='App will generate new image using noise')
 generate.add_argument('base',
                       type=str,
                       action='store',
                       choices=['alpha', 'color', 'grayscale'],
-                      help='set group of color masks')
+                      help='defines group of effects')
 generate.add_argument('effect',
                       type=str,
                       action='store',
@@ -44,7 +44,7 @@ generate.add_argument('effect',
                                'simple-reverse',
                                'lines-many',
                                'sin'],
-                      help='set effect')
+                      help='defines effect')
 generate.add_argument('output',
                       type=dir_path,
                       help='output image directory')
@@ -74,12 +74,12 @@ generate.add_argument('-t', '--type',
                       choices=['jpg', 'png'],
                       help='set file type')
 
-edit = subparsers.add_parser('edit', help='App will editing existing image')
+edit = subparsers.add_parser('edit', help='App will edit existing image')
 edit.add_argument('base',
                   type=str,
                   action='store',
                   choices=['channels'],
-                  help='set group of color masks')
+                  help='defines group of color masks')
 edit.add_argument('effect',
                   type=str,
                   action='store',
@@ -92,13 +92,13 @@ edit.add_argument('input',
                   help='input file name')
 edit.add_argument('output',
                   type=dir_path,
-                  help='directory for output image')
+                  help='output image directory')
 edit.add_argument('-s', '--steps',
                   type=int,
                   action='store',
                   default=10,
                   dest='steps',
-                  help='set steps in pixels for smoothing function')
+                  help='set count of steps for smoothing function')
 edit.add_argument('-t', '--type',
                   type=str,
                   action='store',

@@ -57,7 +57,7 @@ grayscale simple-reverse
 ![Результат](./examples/gen__grayscale__simple-reverse.png)
 
 ```
-grayscale simple-reverse
+grayscale sin
 ```
 ![Результат](./examples/gen__grayscale__sin.png)
 

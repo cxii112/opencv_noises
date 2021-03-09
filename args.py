@@ -48,7 +48,7 @@ generate.add_argument('effect',
                       help='set effect')
 generate.add_argument('output',
                       type=dir_path,
-                      help='directory for output image')
+                      help='output image directory')
 generate.add_argument('--width',
                       type=int,
                       action='store',
@@ -67,7 +67,7 @@ generate.add_argument('-s', '--steps',
                       required=True,
                       default=10,
                       dest='steps',
-                      help='set steps in pixels for smoothing function')
+                      help='set steps in pixels for interpolation function')
 generate.add_argument('-t', '--type',
                       type=str,
                       action='store',

@@ -2,6 +2,7 @@
 Приложение создано для генерации и редктирования изображений, используя обработанный шум.
 
 ## Использование
+
 <details>
 <summary>Основа выглядит так</summary>
 
@@ -10,6 +11,8 @@ noizy.py [-h] {gen,edit} ...
 ```
 Где вместо `...` пишутся параметры, зависящие от режима (`gen` или `edit`).
 </details>
+
+Подробнее можо почитать [тут][full-usage].
 
 #### Примеры
 
@@ -67,4 +70,5 @@ edit channels levels-bmc /path/to/source_image2.jpg /path/to/destination -t png 
 ![Полученное изображение](./examples/edit__channels__levels-bmc__-t_png__-s__20.png)
 
 
-[images-source]: https://thispersondoesnotexist.com/ "Источник"
+[images-source]: https://thispersondoesnotexist.com/ "Источник изображений"
+[full-usage]: ./USAGE.md

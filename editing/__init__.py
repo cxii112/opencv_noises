@@ -1,1 +1,1 @@
-from . import rgb
+from . import channels

@@ -58,6 +58,22 @@ generate.add_argument('-t', '--type',
                       dest='type',
                       choices=['jpg', 'png'],
                       help='set file type')
+generate.add_argument('base',
+                      type=str,
+                      action='store',
+                      choices=['alpha', 'color', 'grayscale'],
+                      help='set group of color masks')
+generate.add_argument('effect',
+                      type=str,
+                      action='store',
+                      choices=['simple',
+                               'lines',
+                               'levels',
+                               'simple-reverse',
+                               'lines-many',
+                               'sin',
+                               'log'],
+                      help='set effect')
 
 edit = subparsers.add_parser('edit', help='App will editing existing image')
 edit.add_argument('input',
@@ -79,4 +95,16 @@ edit.add_argument('-t', '--type',
                   dest='type',
                   choices=['jpg', 'png'],
                   help='set file type')
+edit.add_argument('base',
+                  type=str,
+                  action='store',
+                  choices=['channels'],
+                  help='set group of color masks')
+edit.add_argument('effect',
+                  type=str,
+                  action='store',
+                  choices=['levels-rgb',
+                           'levels-ymc',
+                           'levels-bmc'],
+                  help='set effect')
 args = parser.parse_args()

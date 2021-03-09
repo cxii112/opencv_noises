@@ -3,25 +3,17 @@
 
 ## Использование
 
-<details>
-<summary>Основа выглядит так</summary>
-
-```
-noizy.py [-h] {gen,edit} ...
-```
-Где вместо `...` пишутся параметры, зависящие от режима (`gen` или `edit`).
-</details>
-Например:
+Ддя создания изображения достаточно запустить:
 
 ```
 noizy.py gen grayscale lines /path/to/destination
 ```
-или
+Для изменения:
 ```
 noizy.py edit channels levels-rgb /path/to/source.jpg /path/to/destination
 ```
 
-Подробнее можно почитать [тут][full-usage].
+Подробнее про использование можно почитать [тут][full-usage], полный список эффектов с примерами [здесь][full-effects].
 
 ### Примеры
 
@@ -81,3 +73,4 @@ edit channels levels-bmc /path/to/source_image2.jpg /path/to/destination -t png 
 
 [images-source]: https://thispersondoesnotexist.com/ "Источник изображений"
 [full-usage]: ./USAGE.md
+[full-effects]: ./EFFECTS.md

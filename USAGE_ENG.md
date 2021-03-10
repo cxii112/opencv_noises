@@ -96,4 +96,4 @@ edit channels levels-rgb /path/to/source_image1.jpg /path/to/destination -t png 
 ![Result](./examples/edit__channels__levels-rgb__-t_png__-s_25.png)
 </details>
 
-[full-effects]: ./EFFECTS_ENG.md
+[full-effects]: ./EFFECTS.md

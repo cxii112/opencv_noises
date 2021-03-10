@@ -1,33 +1,29 @@
 # About
-<p>
-Script generates an image with size you want. Under the hood there are different types of color masking. 
-Also you can write your own. 
-</p>
+This application made for crearing or editing images using noise. Также есть версия на [русском][readme-rus].
 
 ## Usage
-<p>
-<code>main.py [-h] [-t {jpg,png}] [--width WIDTH] [--height HEIGHT] -s STEPS out_path</code>
+Make sure you have installed all [requirements][requirements]. 
+More about usage you can find [here][full-usage], full effects list with examples  [here][full-effects].
+To create image you just need to run this:
+```shell
+noizy.py gen grayscale lines /path/to/destination
+```
+Result:
 
-Argument `-t` defines type of output image. Now available `.jpg` and `.png`.
-Arguments `--width` and `--height` defines output image width and height.
-Argument `-s` defines noise matrix size.
-However, you can run `main.py` with flag `-h` you'll see help.
-</p>
+![Resulting image](./examples/gen__grayscale__lines.png)
 
-### Smoothing
-<p>Now available only cubic interpolation for noise.</p>
+For editing:
+```shell
+noizy.py edit channels levels-rgb /path/to/source.image /path/to/destination
+```
+Result:
 
-### Color masking
-<p>Now available alpha masks, color masks, grayscale masks.</p>
+![Resulting image](./examples/edit__channels__levels-ymc.png)
 
-#### Alpha
-<p>
+All people images took from [here][images-source].
 
-For now there is `simple` and `lines` masks.
-</p>
-
-##### simple
-<p>
-
-Multiply value in raw image by 256 and return 
-</p>
+[images-source]: https://thispersondoesnotexist.com/ "Images source"
+[full-usage]: ./USAGE.md
+[full-effects]: ./EFFECTS.md
+[requirements]: ./requirements.txt
+[readme-rus]: ./README.md

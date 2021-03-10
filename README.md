@@ -1,5 +1,5 @@
 # О приложении
-Приложение создано для генерации и редактирования изображений с помощью обработанного шума.
+Приложение создано для генерации и редактирования изображений с помощью обработанного шума. Also you can read this on [english][readme-eng].
 
 ## Использование
 Убедитесь, что у вас уже установлены необходимые [зависимости][requirements]. 
@@ -26,3 +26,4 @@ noizy.py edit channels levels-rgb /path/to/source.image /path/to/destination
 [full-usage]: ./USAGE.md
 [full-effects]: ./EFFECTS.md
 [requirements]: ./requirements.txt
+[readme-eng]: ./README_ENG.md
